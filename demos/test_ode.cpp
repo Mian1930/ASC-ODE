@@ -1,10 +1,12 @@
 #include <iostream>
-#include <fstream> 
+#include <fstream>
+#include <memory> 
 
 #include <nonlinfunc.hpp>
 #include <timestepper.hpp>
+#include "ExplicitEuler.hpp"
 
-using namespace ASC_ode;
+
 
 
 class MassSpring : public NonlinearFunction
@@ -52,7 +54,7 @@ int main()
 
   for (int i = 0; i < steps; i++)
   {
-     stepper.DoStep(tau, y);
+     stepper.doStep(tau, y);
 
      std::cout << (i+1) * tau << "  " << y(0) << " " << y(1) << std::endl;
      outfile << (i+1) * tau << "  " << y(0) << " " << y(1) << std::endl;

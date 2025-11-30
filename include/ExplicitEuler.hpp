@@ -9,7 +9,7 @@ public:
         : TimeStepper(rhs) {}
 
     void doStep(double tau, VectorView<double> y) override {
-        Vector<> k1; 
+        Vector<> k1(y.size());
         m_rhs->evaluate(y, k1); // Evaluate f(y)
         y += tau * k1;          // Update y
     }
